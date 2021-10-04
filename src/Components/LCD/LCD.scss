@@ -1,0 +1,36 @@
+.LCD-wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  position: absolute;
+  top: 35px;
+  width: 290px;
+  height: 185px;
+  left: 15px;
+  border-radius: 5px;
+  overflow-x: auto;
+  //   background-color: #ec9c33;
+  background: rgb(230, 150, 45);
+  background: linear-gradient(
+    122deg,
+    rgba(255, 255, 255, 0.863) 3%,
+    rgb(255, 255, 255) 30%,
+    rgb(233, 233, 231) 95%
+  );
+  box-shadow: inset 5px 5px 16px #dbdbdb, inset -5px -5px 16px #ffffff;
+
+  .records,
+  .result {
+    text-align: right;
+  }
+
+  .records {
+    padding: 0px 17px;
+    font-size: 17px;
+  }
+  .result {
+    padding: 15px;
+    font-size: 55px;
+  }
+}
