@@ -1,7 +1,7 @@
 export enum ActionKind {
   DisplayResult = "DISPLAY_RESULT",
   DisplayRecords = "DISPALY_RECORDS",
-  Operation = "OPERATION_SET"
+  Operation = "OPERATION_SET",
 }
 
 type Action = {
@@ -19,7 +19,7 @@ export const displayRecordsShow = (displayRecords: string): Action => ({
   payload: displayRecords,
 });
 
-// export const operationSet = (operation: string): Action => ({
-//   type: ActionKind.Operation,
-//   payload: operation,
-// })
+export const operationSet = (operation: string): Action => ({
+  type: ActionKind.Operation,
+  payload: operation,
+});

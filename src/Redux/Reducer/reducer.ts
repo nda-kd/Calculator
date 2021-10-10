@@ -1,24 +1,24 @@
 import { ActionKind } from "../Actions/action";
 
-type state = {
-  displayResult: string;
-  displayRecords: string;
-  operation: string;
-};
-
 type Action = {
   type: ActionKind;
   payload: any;
 };
 
+type state = {
+  displayResult: string;
+  displayRecords: string;
+  operation: string[];
+};
+
 const initState: state = {
   displayResult: "",
   displayRecords: "",
-  operation: "",
+  operation: [],
 };
 
 function reducer(state = initState, action: Action): state {
-  const opreatorIs = state.displayRecords.split(" ");
+  const lastOpreatorIs = state.displayRecords.split(" ");
 
   switch (action.type) {
     case ActionKind.DisplayResult:
@@ -28,12 +28,12 @@ function reducer(state = initState, action: Action): state {
           displayResult: "",
         };
       } else {
-        const recordLength = opreatorIs.length - 1;
+        const recordLength = lastOpreatorIs.length - 1;
         if (
-          opreatorIs[recordLength] === "-" ||
-          opreatorIs[recordLength] === "+" ||
-          opreatorIs[recordLength] === "/" ||
-          opreatorIs[recordLength] === "*"
+          lastOpreatorIs[recordLength] === "-" ||
+          lastOpreatorIs[recordLength] === "+" ||
+          lastOpreatorIs[recordLength] === "/" ||
+          lastOpreatorIs[recordLength] === "*"
         ) {
           return {
             ...state,
@@ -81,14 +81,18 @@ function reducer(state = initState, action: Action): state {
         }
       }
 
-    // case ActionKind.Operation:
-    //   if(action.payload === "+"){
-
-    //   }
-    //   return {
-    //     ...state,
-    //     operation: action.payload
-    //   }
+    case ActionKind.Operation:
+      if (action.payload === "C") {
+        return {
+          ...state,
+          operation: [],
+        };
+      } else {
+        return {
+          ...state,
+          operation: [...state.operation, action.payload],
+        };
+      }
 
     default:
       return state;
