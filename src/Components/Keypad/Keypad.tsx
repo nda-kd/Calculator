@@ -131,13 +131,15 @@ function KeyPad() {
   };
 
   const percentOnClick = () => {
-    let percent: string = (parseInt(displayState) / 100).toString();
-    displayResultDispatch({ type: ActionKind.DisplayResult, payload: "C" });
-    displayResultDispatch({
-      type: ActionKind.DisplayResult,
-      payload: percent,
-    });
-    setNumber(percent);
+    if (displayState) {
+      let percent: string = (parseInt(displayState) / 100).toString();
+      displayResultDispatch({ type: ActionKind.DisplayResult, payload: "C" });
+      displayResultDispatch({
+        type: ActionKind.DisplayResult,
+        payload: percent,
+      });
+      setNumber(percent);
+    }
   };
 
   const equalOnClick = () => {
